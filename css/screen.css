@@ -1,4 +1,48 @@
 /*
+ Fonts
+---
+@font-face declaration
+*/
+
+@font-face {
+    font-family: "Inter UI";
+    font-weight: 400;
+    src: url("../fonts/Inter-UI-Regular.woff2") format("woff2");
+    src: url("../fonts/Inter-UI-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Inter UI";
+    font-weight: 700;
+    src: url("../fonts/Inter-UI-Bold.woff2") format("woff2");
+    src: url("../fonts/Inter-UI-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Droid Serif";
+    font-weight: 400;
+    src: url("../fonts/DroidSerif-Regular-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Droid Serif";
+    font-weight: 400;
+    src: url("../fonts/DroidSerif-italic-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Droid Serif";
+    font-weight: 700;
+    src: url("../fonts/DroidSerif-Bold-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Droid Serif";
+    font-weight: 700;
+    src: url("../fonts/DroidSerif-BoldItalic-webfont.woff") format("woff");
+}
+
+/*
     Elements: Page
     ---
     Default markup for page level elements
@@ -7,9 +51,16 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
-    color: #111;
+    font-family: "Droid Serif", Georgia, serif;
+    color: #5C6366;
     padding: 48px 24px 24px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 body {
@@ -31,7 +82,7 @@ body {
 }
 
 ::selection {
-    background: #e85e00;
+    background: #..E6A1;
     color: white;
     text-shadow: none;
 }
@@ -48,17 +99,85 @@ img {
 }
 
 /*
+ Components: Author
+*/
+
+.c-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+.c-author__image {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    margin-right: 16px;
+}
+
+.c-author__caption {
+    padding-top: 0;
+}
+
+.c-author__name, .c-author__meta {
+    margin-bottom: 0;
+}
+
+.c-author__meta {
+    font-size: 14px;
+    font-family: "Inter UI", "Helvetica Neue", Helvetica, arial, sans-serif;
+    line-height: 16px;
+    margin-top: 4px;
+}
+
+.c-author__name {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+/*
+    Components: article
+*/
+
+.c-article__header, .c-article__body {
+    max-width: 1200px;
+    margin: 0auto;
+}
+
+.c-article__header {
+    padding: 24px 24px 0;
+}
+
+.c-article__body {
+    padding: 0 24px;
+}
+
+.c-article__date {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+}
+
+/*
     Elements: typography
     ---
     Default markup for typographic elements
 */
 
+h1, h2, h3 {
+    color: #17181A;
+    font-family: "Inter UI", "Helvetica Neue", Helvetica, arial, sans-serif;
+}
+
+*+h2 {
+    margin-top: 48px;
+}
+
 h1 {
-    font-family: "Times New Roman", serif;
     font-size: 36px;
-    font-weight: normal;
     line-height: 40px;
     margin: 0 0 24px;
+    font-family: "Playfair Display", serif;
 }
 
 h2 {
@@ -73,31 +192,21 @@ h3 {
     margin: 0 0 24px;
 }
 
-h4,
-h5,
-h6 {
+h4, h5, h6 {
     font-size: 16px;
     line-height: 24px;
     margin: 0 0 24px;
 }
 
-p,
-ol,
-ul,
-dl,
-table,
-address,
-figure {
+p, ol, ul, dl, table, address, figure {
     margin: 0 0 24px;
 }
 
-ul,
-ol {
+ul, ol {
     padding-left: 24px;
 }
 
-li ul,
-li ol {
+li ul, li ol {
     margin-bottom: 0;
 }
 
@@ -129,18 +238,16 @@ hr {
 }
 
 a {
-    color: RoyalBlue;
+    color: #00A1E6;
     transition: all .1s ease-in-out;
 }
 
-a:visited,
-a:active {
-    color: BlueViolet;
+a:visited, a:active {
+    color: #00A1E6;
 }
 
-a:hover,
-a:focus {
-    color: Crimson;
+a:hover, a:focus {
+    color: #00A1E6;
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -150,22 +257,68 @@ a:focus {
 /* Medium devices (tablets, 768px and up) */
 
 @media (min-width: 768px) {
+    .c-article__header {
+        padding: 48px 48px 24px;
+    }
+    .c-article__author {
+        padding-bottom: 24px;
+    }
+    .c-article__body {
+        padding: 24px 48px;
+    }
     html {
         padding: 48px 48px 24px;
     }
     h1 {
-        font-size: 58px;
-        line-height: 64px;
+        font-size: 46px;
+        line-height: 56px;
     }
 }
 
 /* Large devices (landscape tablets, desktops, 992px and up) */
 
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+    .c-article__content {
+        width: 75%;
+    }
+    .c-article__author {
+        padding-right: 24px;
+        width: 25%;
+    }
+    .c-article__body {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .c-author {
+        display: block;
+    }
+    .c-author__image {
+        margin-bottom: 16px;
+    }
+    h1 {
+        font-size: 52px;
+        line-height: 64px;
+    }
+}
+
+/*
+    utilities: max-width
+    ---
+    utility classes to put specific max widtn onto elements
+*/
+
+.u-max-width-sm {
+    max-width: 36em;
+}
 
 /* Extra large devices (large desktops, 1200px and up) */
 
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 58px;
+        line-height: 72px;
+    }
+}
 
 /*
     Print styles.
@@ -175,9 +328,7 @@ a:focus {
 */
 
 @media print {
-    *,
-    *:before,
-    *:after {
+    *, *:before, *:after {
         background: transparent !important;
         color: #000 !important;
         /* Black prints faster:
@@ -185,8 +336,7 @@ a:focus {
         box-shadow: none !important;
         text-shadow: none !important;
     }
-    a,
-    a:visited {
+    a, a:visited {
         text-decoration: underline;
     }
     a[href]:after {
@@ -199,15 +349,13 @@ a:focus {
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
+    a[href^="#"]:after, a[href^="javascript:"]:after {
         content: "";
     }
     pre {
         white-space: pre-wrap !important;
     }
-    pre,
-    blockquote {
+    pre, blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
@@ -218,18 +366,14 @@ a:focus {
     thead {
         display: table-header-group;
     }
-    tr,
-    img {
+    tr, img {
         page-break-inside: avoid;
     }
-    p,
-    h2,
-    h3 {
+    p, h2, h3 {
         orphans: 3;
         widows: 3;
     }
-    h2,
-    h3 {
+    h2, h3 {
         page-break-after: avoid;
     }
 }
